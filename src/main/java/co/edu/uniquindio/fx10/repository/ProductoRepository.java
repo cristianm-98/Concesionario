@@ -1,8 +1,7 @@
-package co.edu.uniquindio.fx10.repositorio;
+package co.edu.uniquindio.fx10.repository;
 
-import co.edu.uniquindio.fx10.modelo.Producto;
+import co.edu.uniquindio.fx10.models.Producto;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Repositorio centralizado para gestionar los productos
@@ -62,7 +61,7 @@ public class ProductoRepository {
      */
     public Producto buscarPorCodigo(String codigo) {
         return productos.stream()
-                .filter(p -> p.getCodigo().equals(codigo))
+                .filter(p -> p.getCode().equals(codigo))
                 .findFirst()
                 .orElse(null);
     }

@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 /**
  * Clase principal de la aplicación JavaFX
  */
@@ -17,7 +19,8 @@ public class App extends Application {
         Parent root = loader.load();
 
         Scene scene = new Scene(root, 900, 600);
-        
+        //scene.getStylesheets().add((Objects.requireNonNull(getClass().getResource("/co/edu/uniquindio/fx10/vista/style.css"))).toExternalForm());
+
         primaryStage.setTitle("Sistema de Gestión de Productos");
         primaryStage.setScene(scene);
         primaryStage.setMinWidth(800);

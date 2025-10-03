@@ -1,8 +1,8 @@
-package co.edu.uniquindio.fx10.controlador;
+package co.edu.uniquindio.fx10.controllers;
 
 import co.edu.uniquindio.fx10.App;
-import co.edu.uniquindio.fx10.modelo.Producto;
-import co.edu.uniquindio.fx10.repositorio.ProductoRepository;
+import co.edu.uniquindio.fx10.models.Producto;
+import co.edu.uniquindio.fx10.repository.ProductoRepository;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -43,19 +43,6 @@ public class FormularioProductoController {
     private DashboardController dashboardController;
     private VBox contenedorPrincipal;
 
-    @FXML
-    public void initialize() {
-        productoRepository = ProductoRepository.getInstancia();
-    }
-
-    /**
-     * Establece el controlador del dashboard para poder regresar
-     */
-    public void setDashboardController(DashboardController dashboardController) {
-        this.dashboardController = dashboardController;
-        this.contenedorPrincipal = dashboardController.getContenedorPrincipal();
-    }
-
     /**
      * Maneja el evento de guardar producto
      */
@@ -83,7 +70,7 @@ public class FormularioProductoController {
             productoRepository.agregarProducto(nuevoProducto);
 
             mostrarAlerta("Éxito", "Producto creado correctamente", Alert.AlertType.INFORMATION);
-            
+
             // Volver al dashboard
             volverAlDashboard();
 
@@ -98,6 +85,19 @@ public class FormularioProductoController {
     @FXML
     private void onCancelar() {
         volverAlDashboard();
+    }
+
+    @FXML
+    public void initialize() {
+        productoRepository = ProductoRepository.getInstancia();
+    }
+
+    /**
+     * Establece el controlador del dashboard para poder regresar
+     */
+    public void setDashboardController(DashboardController dashboardController) {
+        this.dashboardController = dashboardController;
+        this.contenedorPrincipal = dashboardController.getContenedorPrincipal();
     }
 
     /**
@@ -116,10 +116,10 @@ public class FormularioProductoController {
             e.printStackTrace();
         }
     }
-
     /**
      * Valida que los campos del formulario estén completos
      */
+
     private boolean validarCampos() {
         if (txtCodigo.getText().trim().isEmpty()) {
             mostrarAlerta("Error de validación", "El código es obligatorio", Alert.AlertType.WARNING);
@@ -147,6 +147,7 @@ public class FormularioProductoController {
     /**
      * Muestra una alerta al usuario
      */
+
     private void mostrarAlerta(String titulo, String mensaje, Alert.AlertType tipo) {
         Alert alerta = new Alert(tipo);
         alerta.setTitle(titulo);
