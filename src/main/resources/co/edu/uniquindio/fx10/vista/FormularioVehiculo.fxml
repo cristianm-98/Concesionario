@@ -10,14 +10,14 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox spacing="20" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.fx10.controllers.FormularioProductoController">
+<VBox spacing="20" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.fx10.controllers.FormularioVehiculoController">
 
     <padding>
         <Insets bottom="30" left="30" right="30" top="30" />
     </padding>
 
     <!-- Encabezado -->
-    <Label text="Crear Nuevo Producto" />
+    <Label text="Crear Nuevo Vehiculo" />
 
     <!-- Formulario -->
     <VBox spacing="15">
@@ -27,30 +27,25 @@
 
         <GridPane hgap="15" vgap="20">
             <!-- Código -->
-            <Label text="Código:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-            <TextField fx:id="txtCodigo" promptText="Ingrese el código del producto" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <Label text="Placa:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField fx:id="txtPlaca" promptText="Ingrese la marca" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
             <!-- Nombre -->
-            <Label text="Nombre:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-            <TextField fx:id="txtNombre" promptText="Ingrese el nombre del producto" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Marca:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <TextField fx:id="txtMarca" promptText="Ingrese la marca" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
             <!-- Descripción -->
-            <Label text="Descripción:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-            <TextField fx:id="txtDescripcion" promptText="Ingrese la descripción del producto" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-
-            <!-- Precio -->
-            <Label text="Precio:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-            <TextField fx:id="txtPrecio" promptText="Ingrese el precio" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-
-            <!-- Stock -->
-            <Label text="Stock:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-            <TextField fx:id="txtStock" promptText="Ingrese la cantidad en stock" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label text="Modelo:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <TextField fx:id="txtModelo" promptText="Ingrese el modelo" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         <Label text="Tipo:" GridPane.rowIndex="3" />
+         <TextField fx:id="txtTipo" promptText="Ingrese el tipo " GridPane.columnIndex="1" GridPane.rowIndex="3" />
 
             <columnConstraints>
                 <ColumnConstraints minWidth="120" prefWidth="120" />
                 <ColumnConstraints hgrow="ALWAYS" />
             </columnConstraints>
          <rowConstraints>
+            <RowConstraints />
             <RowConstraints />
             <RowConstraints />
             <RowConstraints />
@@ -65,7 +60,7 @@
                 <Insets top="20" />
             </VBox.margin>
             <Button fx:id="btnCancelar" onAction="#onCancelar" text="Cancelar" />
-            <Button fx:id="btnGuardar" onAction="#onGuardarProducto" text="Guardar Producto" />
+            <Button fx:id="btnGuardar" onAction="#onGuardarProducto" text="Guardar Vehiculo" />
         </HBox>
     </VBox>
 

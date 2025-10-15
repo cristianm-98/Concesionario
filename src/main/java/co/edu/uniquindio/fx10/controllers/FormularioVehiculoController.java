@@ -1,8 +1,8 @@
 package co.edu.uniquindio.fx10.controllers;
 
 import co.edu.uniquindio.fx10.App;
-import co.edu.uniquindio.fx10.models.Producto;
-import co.edu.uniquindio.fx10.repository.ProductoRepository;
+import co.edu.uniquindio.fx10.models.Vehiculo;
+import co.edu.uniquindio.fx10.repository.VehiculoRepository;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,22 +16,19 @@ import java.io.IOException;
 /**
  * Controlador para el formulario de creación de productos
  */
-public class FormularioProductoController {
+public class FormularioVehiculoController {
 
     @FXML
-    private TextField txtCodigo;
+    private TextField txtPlaca;
 
     @FXML
-    private TextField txtNombre;
+    private TextField txtMarca;
 
     @FXML
-    private TextField txtDescripcion;
+    private TextField txtModelo;
 
     @FXML
-    private TextField txtPrecio;
-
-    @FXML
-    private TextField txtStock;
+    private TextField txtTipo;
 
     @FXML
     private Button btnGuardar;
@@ -39,7 +36,7 @@ public class FormularioProductoController {
     @FXML
     private Button btnCancelar;
 
-    private ProductoRepository productoRepository;
+    private VehiculoRepository vehiculoRepository;
     private DashboardController dashboardController;
     private VBox contenedorPrincipal;
 
@@ -53,21 +50,20 @@ public class FormularioProductoController {
         }
 
         try {
-            String codigo = txtCodigo.getText().trim();
-            String nombre = txtNombre.getText().trim();
-            String descripcion = txtDescripcion.getText().trim();
-            double precio = Double.parseDouble(txtPrecio.getText().trim());
-            int stock = Integer.parseInt(txtStock.getText().trim());
+            String placa = txtPlaca.getText().trim();
+            String marca = txtMarca.getText().trim();
+            String modelo = txtModelo.getText().trim();
+            String tipo=txtTipo.getText().trim();
 
             // Verificar si el código ya existe
-            if (productoRepository.buscarPorCodigo(codigo) != null) {
+            if (vehiculoRepository.buscarPorPlaca(placa) != null) {
                 mostrarAlerta("Error", "Ya existe un producto con ese código", Alert.AlertType.ERROR);
                 return;
             }
 
             // Crear y guardar el producto
-            Producto nuevoProducto = new Producto(codigo, nombre, descripcion, precio, stock);
-            productoRepository.agregarProducto(nuevoProducto);
+            Vehiculo nuevoVehiculo = new Vehiculo(placa,marca,modelo,tipo);
+            vehiculoRepository.agregarVehiculos(nuevoVehiculo);
 
             mostrarAlerta("Éxito", "Producto creado correctamente", Alert.AlertType.INFORMATION);
 
@@ -89,7 +85,7 @@ public class FormularioProductoController {
 
     @FXML
     public void initialize() {
-        productoRepository = ProductoRepository.getInstancia();
+        vehiculoRepository = VehiculoRepository.getInstancia();
     }
 
     /**
@@ -121,24 +117,20 @@ public class FormularioProductoController {
      */
 
     private boolean validarCampos() {
-        if (txtCodigo.getText().trim().isEmpty()) {
-            mostrarAlerta("Error de validación", "El código es obligatorio", Alert.AlertType.WARNING);
+        if (txtPlaca.getText().trim().isEmpty()) {
+            mostrarAlerta("Error de validación", "La placa es obligatorio", Alert.AlertType.WARNING);
             return false;
         }
-        if (txtNombre.getText().trim().isEmpty()) {
-            mostrarAlerta("Error de validación", "El nombre es obligatorio", Alert.AlertType.WARNING);
+        if (txtMarca.getText().trim().isEmpty()) {
+            mostrarAlerta("Error de validación", "La marca es obligatorio", Alert.AlertType.WARNING);
             return false;
         }
-        if (txtDescripcion.getText().trim().isEmpty()) {
-            mostrarAlerta("Error de validación", "La descripción es obligatoria", Alert.AlertType.WARNING);
+        if (txtModelo.getText().trim().isEmpty()) {
+            mostrarAlerta("Error de validación", "El modelo es obligatoria", Alert.AlertType.WARNING);
             return false;
         }
-        if (txtPrecio.getText().trim().isEmpty()) {
-            mostrarAlerta("Error de validación", "El precio es obligatorio", Alert.AlertType.WARNING);
-            return false;
-        }
-        if (txtStock.getText().trim().isEmpty()) {
-            mostrarAlerta("Error de validación", "El stock es obligatorio", Alert.AlertType.WARNING);
+        if (txtTipo.getText().trim().isEmpty()) {
+            mostrarAlerta("Error de validación", "El tipo es obligatoria", Alert.AlertType.WARNING);
             return false;
         }
         return true;

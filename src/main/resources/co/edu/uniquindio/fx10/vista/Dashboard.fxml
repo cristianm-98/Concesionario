@@ -6,19 +6,20 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="contenedorPrincipal" prefHeight="340.0" prefWidth="423.0" spacing="20" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.fx10.controllers.DashboardController">
-
+<VBox fx:id="contenedorPrincipal" prefHeight="340.0" prefWidth="423.0" spacing="20" xmlns="http://javafx.com/javafx/25"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.fx10.controllers.DashboardController">
 
     <!-- Encabezado -->
-    <HBox alignment="CENTER_LEFT" spacing="20">
-        <Label fx:id="lblTitulo" text="Dashboard de Productos" />
-        <Region HBox.hgrow="ALWAYS" />
+    <HBox alignment="CENTER_LEFT">
+        <Label fx:id="lblTitulo" text="Dashboard de Productos"/>
     </HBox>
-      <Label text="Lista de Productos" />
-      <HBox>
-         <children>
-            <Button fx:id="btnListaProducto" mnemonicParsing="false" onAction="#onListaProducto" text="Lista de Producto" />
-            <Button fx:id="btnFormularioProducto" mnemonicParsing="false" onAction="#onFormularioProducto" text="Formulario Producto" />
-         </children>
-      </HBox>
-    </VBox>
+    <Label text="Menu"/>
+    <HBox>
+        <children>
+            <Button fx:id="btnListaProducto" mnemonicParsing="false" onAction="#onListaProducto"
+                    text="Lista de Producto"/>
+            <Button fx:id="btnFormularioProducto" mnemonicParsing="false" onAction="#onFormularioProducto"
+                    text="Formulario Producto"/>
+        </children>
+    </HBox>
+</VBox>

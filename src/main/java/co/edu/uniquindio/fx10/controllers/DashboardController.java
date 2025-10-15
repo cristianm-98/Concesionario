@@ -36,11 +36,11 @@ import javafx.scene.layout.VBox;
         @FXML
         void onFormularioProducto(ActionEvent event) {
             try {
-                FXMLLoader loader = new FXMLLoader(App.class.getResource("/co/edu/uniquindio/fx10/vista/FormularioProducto.fxml"));
+                FXMLLoader loader = new FXMLLoader(App.class.getResource("/co/edu/uniquindio/fx10/vista/FormularioVehiculo.fxml"));
                 Parent formulario = loader.load();
 
                 // Obtener el controlador del formulario
-                FormularioProductoController controller = loader.getController();
+                FormularioVehiculoController controller = loader.getController();
                 controller.setDashboardController(this);
 
                 // Reemplazar el contenido del contenedor principal
@@ -64,11 +64,11 @@ import javafx.scene.layout.VBox;
         @FXML
         void onListaProducto(ActionEvent event) {
             try {
-                FXMLLoader loader = new FXMLLoader(App.class.getResource("/co/edu/uniquindio/fx10/vista/ListaProducto.fxml"));
+                FXMLLoader loader = new FXMLLoader(App.class.getResource("/co/edu/uniquindio/fx10/vista/ListaVehiculo.fxml"));
                 Parent listaProducto = loader.load();
 
                 // Obtener el controlador del formulario
-                ListaProductoController controller= loader.getController();
+                ListaVehiculoController controller= loader.getController();
                 controller.setDashboardController(this);
 
                 // Reemplazar el contenido del contenedor principal

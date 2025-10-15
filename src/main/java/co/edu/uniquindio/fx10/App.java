@@ -18,13 +18,14 @@ public class App extends Application {
         FXMLLoader loader = new FXMLLoader(App.class.getResource("/co/edu/uniquindio/fx10/vista/Dashboard.fxml"));
         Parent root = loader.load();
 
-        Scene scene = new Scene(root, 900, 600);
-        //scene.getStylesheets().add((Objects.requireNonNull(getClass().getResource("/co/edu/uniquindio/fx10/vista/style.css"))).toExternalForm());
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add((Objects.requireNonNull(getClass().getResource("/co/edu/uniquindio/fx10/vista/style.css"))).toExternalForm());
+        primaryStage.setScene(scene);
 
         primaryStage.setTitle("Sistema de Gestión de Productos");
-        primaryStage.setScene(scene);
-        primaryStage.setMinWidth(800);
-        primaryStage.setMinHeight(500);
+        primaryStage.setResizable(false);
+        primaryStage.setWidth(650);
+        primaryStage.setHeight(450);
         primaryStage.show();
     }
 

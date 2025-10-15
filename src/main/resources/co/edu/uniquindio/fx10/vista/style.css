@@ -1,0 +1,88 @@
+/* =========================
+   ESTILOS GENERALES
+========================= */
+.root {
+    -fx-background-color: #f9fafb; /* Fondo claro y limpio */
+    -fx-font-family: "Segoe UI", "Roboto", sans-serif;
+}
+
+/* =========================
+   TÍTULO
+========================= */
+.label {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50; /* Azul grisáceo elegante */
+}
+
+/* =========================
+   TABLA
+========================= */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #d1d5db;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 5px;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(to bottom, #4f46e5, #3730a3); /* Degradado morado */
+    -fx-background-radius: 8px 8px 0 0;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-size: 35px;
+    -fx-border-color: transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+}
+
+.table-row-cell {
+    -fx-cell-size: 30px;
+}
+
+.table-row-cell:filled:selected {
+    -fx-background-color: #e0e7ff; /* Azul muy suave al seleccionar */
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #eef2ff; /* Efecto hover */
+}
+
+/* =========================
+   BOTONES
+========================= */
+.button {
+    -fx-background-color: linear-gradient(to right, #6366f1, #4338ca);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-background-radius: 20px;
+    -fx-padding: 6px 15px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 4, 0.3, 0, 2);
+    -fx-border-color: transparent;
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to right, #818cf8, #4f46e5);
+}
+
+.button:pressed {
+    -fx-background-color: #312e81;
+}
+
+/* =========================
+   SEPARADOR
+========================= */
+.separator *.line {
+    -fx-border-color: #d1d5db;
+    -fx-border-width: 1;
+}

@@ -5,8 +5,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.fx10.App;
-import co.edu.uniquindio.fx10.models.Producto;
-import co.edu.uniquindio.fx10.repository.ProductoRepository;
+import co.edu.uniquindio.fx10.models.Vehiculo;
+import co.edu.uniquindio.fx10.repository.VehiculoRepository;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,12 +17,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 
-public class ListaProductoController {
+public class ListaVehiculoController {
 
-    private ProductoRepository productoRepository;
+    private VehiculoRepository vehiculoRepository;
     private DashboardController dashboardController;
     private VBox contenedorPrincipal;
-    private ObservableList<Producto> listaProductos;
+    private ObservableList<Vehiculo> listaVehiculos;
 
     @FXML
     private ResourceBundle resources;
@@ -37,28 +37,25 @@ public class ListaProductoController {
     private Button btnCancelar;
 
     @FXML
-    private TableColumn<Producto, String> colCodigo;
+    private TableColumn<Vehiculo, String> colPlaca;
 
     @FXML
-    private TableColumn<Producto, String> colDescripcion;
+    private TableColumn<Vehiculo, String> colMarca;
 
     @FXML
-    private TableColumn<Producto,String > colNombre;
+    private TableColumn<Vehiculo,String > colModelo;
 
     @FXML
-    private TableColumn<Producto, Double> colPrecio;
+    private TableColumn<Vehiculo,String > colTipo;
 
     @FXML
-    private TableColumn<Producto, Integer> colStock;
-
-    @FXML
-    private TableView<Producto> tablaProductos;
+    private TableView<Vehiculo> tablaVehiculo;
 
     @FXML
     void onEliminar(ActionEvent event) {
-        Producto productoSeleccionado = tablaProductos.getSelectionModel().getSelectedItem();
+        Vehiculo vehiculoSeleccionado = tablaVehiculo.getSelectionModel().getSelectedItem();
 
-        if (productoSeleccionado == null) {
+        if (vehiculoSeleccionado == null) {
             mostrarAlerta("Advertencia", "Por favor seleccione un producto para eliminar", Alert.AlertType.WARNING);
             return;
         }
@@ -66,12 +63,12 @@ public class ListaProductoController {
         Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
         confirmacion.setTitle("Confirmar eliminación");
         confirmacion.setHeaderText("¿Está seguro de eliminar el producto?");
-        confirmacion.setContentText("Producto: " + productoSeleccionado.getName());
+        confirmacion.setContentText("Producto: " + vehiculoSeleccionado.getPlaca());
 
         confirmacion.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
-                productoRepository.eliminarProducto(productoSeleccionado);
-                cargarProductos();
+                vehiculoRepository.eliminarVehiculos(vehiculoSeleccionado);
+                cargarVehiculos();
                 mostrarAlerta("Éxito", "Producto eliminado correctamente", Alert.AlertType.INFORMATION);
             }
         });
@@ -93,38 +90,26 @@ public class ListaProductoController {
 
     @FXML
     void initialize() {
-        productoRepository = ProductoRepository.getInstancia();
+        vehiculoRepository = VehiculoRepository.getInstancia();
 
         // Configurar las columnas de la tabla
-        colCodigo.setCellValueFactory(new PropertyValueFactory<>("code"));
-        colNombre.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colDescripcion.setCellValueFactory(new PropertyValueFactory<>("description"));
-        colPrecio.setCellValueFactory(new PropertyValueFactory<>("price"));
-        colStock.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        colPlaca.setCellValueFactory(new PropertyValueFactory<>("placa"));
+        colMarca.setCellValueFactory(new PropertyValueFactory<>("marca"));
+        colModelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
+        colTipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
 
-        // Formatear la columna de precio
-        colPrecio.setCellFactory(column -> new TableCell<Producto, Double>() {
-            @Override
-            protected void updateItem(Double precio, boolean empty) {
-                super.updateItem(precio, empty);
-                if (empty || precio == null) {
-                    setText(null);
-                } else {
-                    setText(String.format("$%.2f", precio));
-                }
-            }
-        });
+
 
         // Cargar los productos
-        cargarProductos();
+        cargarVehiculos();
     }
 
     /**
       *Carga los productos en la tabla
      */
-    public void cargarProductos() {
-        listaProductos = FXCollections.observableArrayList(productoRepository.getProductos());
-        tablaProductos.setItems(listaProductos);
+    public void cargarVehiculos() {
+        listaVehiculos=FXCollections.observableArrayList(VehiculoRepository.getInstancia().getVehiculos());
+        tablaVehiculo.setItems(listaVehiculos);
     }
     /**
      * Vuelve a mostrar el dashboard
