@@ -37,4 +37,11 @@ public class Moto extends Vehiculo {
         }
     }
 
+    public String getEsElectrica() {
+        return esElectrica;
+    }
+
+    public void setEsElectrica(String esElectrica) {
+        this.esElectrica = esElectrica;
+    }
 }

@@ -1,6 +1,7 @@
 package co.edu.uniquindio.fx10.controllers;
 
 import co.edu.uniquindio.fx10.App;
+import co.edu.uniquindio.fx10.models.Moto;
 import co.edu.uniquindio.fx10.models.Vehiculo;
 import co.edu.uniquindio.fx10.repository.VehiculoRepository;
 import javafx.fxml.FXML;
@@ -62,8 +63,12 @@ public class FormularioVehiculoController {
             }
 
             // Crear y guardar el producto
-            Vehiculo nuevoVehiculo = new Vehiculo(placa,marca,modelo,tipo);
-            vehiculoRepository.agregarVehiculos(nuevoVehiculo);
+            Moto nuevaMoto = new Moto.Builder().placa(placa)
+                    .marca(marca)
+                    .modelo(modelo)
+                    .esElectrica(tipo)
+                    .build();
+            vehiculoRepository.agregarVehiculos(nuevaMoto);
 
             mostrarAlerta("Éxito", "Producto creado correctamente", Alert.AlertType.INFORMATION);
 

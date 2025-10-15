@@ -1,5 +1,6 @@
 package co.edu.uniquindio.fx10.repository;
 
+import co.edu.uniquindio.fx10.models.Moto;
 import co.edu.uniquindio.fx10.models.Vehiculo;
 import java.util.ArrayList;
 
@@ -30,7 +31,22 @@ public class VehiculoRepository {
      * Carga algunos productos de ejemplo
      */
     private void cargarDatosEjemplo() {
-        vehiculos.add(new Vehiculo("EGI17E","SUZUKI","2018"));
+
+        vehiculos.add(new Moto.Builder().placa("ZDA98F")
+                .marca("YAMAHA")
+                .modelo("2015")
+                .esElectrica("SI")
+                .build());
+        vehiculos.add(new Moto.Builder().placa("TRZ25A")
+                .marca("SUZUKI")
+                .modelo("2021")
+                .esElectrica("NO")
+                .build());
+        vehiculos.add(new Moto.Builder().placa("EGI71E")
+                .marca("HONDA")
+                .modelo("2020")
+                .esElectrica("SI")
+                .build());
     }
 
     /**

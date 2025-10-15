@@ -96,9 +96,7 @@ public class ListaVehiculoController {
         colPlaca.setCellValueFactory(new PropertyValueFactory<>("placa"));
         colMarca.setCellValueFactory(new PropertyValueFactory<>("marca"));
         colModelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
-        colTipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
-
-
+        colTipo.setCellValueFactory(new PropertyValueFactory<>("esElectrica"));
 
         // Cargar los productos
         cargarVehiculos();
